@@ -11,9 +11,9 @@ RUN apk add --no-cache \
 # Outils de compilation pour docker-php-ext-install
 RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS
 
-# Extensions PHP requises par Krayin / Laravel / PhpSpreadsheet
+# Extensions PHP (ajout de calendar)
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
- && docker-php-ext-install -j$(nproc) gd zip intl mbstring bcmath pdo pdo_mysql exif opcache
+ && docker-php-ext-install -j$(nproc) gd zip intl mbstring bcmath pdo pdo_mysql exif opcache calendar
 
 # On peut retirer les build-deps après compilation
 RUN apk del .build-deps
