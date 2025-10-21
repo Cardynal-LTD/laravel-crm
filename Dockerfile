@@ -43,4 +43,4 @@ EXPOSE 8080
 
 CMD sh -lc 'php artisan key:generate --force || true \
   && php artisan migrate --force || true \
-  && php -S 0.0.0.0:${PORT} -t public server.php'
+  && php artisan serve --host=0.0.0.0 --port=${PORT:-8080}'
